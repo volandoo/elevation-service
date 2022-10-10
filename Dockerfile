@@ -8,10 +8,9 @@ WORKDIR /app
 RUN yarn install
 
 RUN mkdir /app/data
-RUN aws s3 cp --no-sign-request --recursive s3://elevation-tiles-prod-eu/skadi /app/data
 
 ENV TILE_SET_CACHE 128
-ENV TILE_SET_PATH /app/data
+ENV TILE_SET_PATH s3://elevation-tiles-prod-eu/skadi
 ENV MAX_POST_SIZE 700kb
 
 EXPOSE 3000
